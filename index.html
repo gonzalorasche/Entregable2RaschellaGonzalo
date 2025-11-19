@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>OSAKAN — RESERVAS</title>
+
+    <!-- ESTILOS Y SCRIPT -->
+    <link rel="stylesheet" href="./styles/main.css" />
+    <script defer src="./script/script.js"></script>
+</head>
+
+<body>
+    <header class="cabecera">
+        <div class="cabecera-inner">
+            <div class="marca">
+                <h1 class="marca-titulo">OSAKAN CRUISE LINE</h1>
+                <p class="marca-sub">Simulador de reservas · Segunda Entrega JS | Coderhouse | Gonzalo Damián Raschella</p>
+            </div>
+            <div class="acciones-header">
+                <button id="btnAbrirCarrito" class="btn btn-ghost">Carrito<span id="contadorCarrito" class="contador">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-contenedor">
+
+        <!-- BUSCADOR -->
+        <section class="panel panel-buscador">
+            <h2 class="seccion-titulo">1 · Buscar salidas</h2>
+            <form id="formBusqueda" class="grid-buscador" autocomplete="off" onsubmit="return false;">
+                <div class="campo">
+                    <label for="selectMes">Mes</label>
+                    <select id="selectMes"><option value="">-- Seleccioná mes --</option></select>
+                </div>
+
+                <div class="campo">
+                    <label for="selectAnio">Año</label>
+                    <select id="selectAnio"><option value="2026">2026</option></select>
+                </div>
+
+                <div class="campo">
+                    <label for="selectPuertoSalida">Puerto de salida</label>
+                    <select id="selectPuertoSalida" disabled><option>-- Primero elegí mes --</option></select>
+                </div>
+
+                <div class="campo">
+                    <label for="selectDuracion">Duración</label>
+                    <select id="selectDuracion" disabled><option>-- Primero elegí puerto --</option></select>
+                </div>
+
+                <div class="campo campo-full">
+                    <label for="selectCrucero">Crucero / Salida</label>
+                    <select id="selectCrucero" disabled><option>-- Primero elegí duración --</option></select>
+                </div>
+
+                <div class="campo campo-full acciones-form">
+                    <button id="btnMostrar" class="btn btn-primary" disabled>Mostrar opción</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- CRUCERO SELECCIONADO -->
+        <section class="panel panel-resultado">
+            <h2 class="seccion-titulo">2 · Crucero seleccionado</h2>
+            <div id="areaResultado" class="area-resultado">
+                <p class="hint">Seleccioná mes → puerto → duración → crucero para ver la tarjeta grande (imagen arriba, texto debajo).</p>
+            </div>
+        </section>
+
+        <!-- EXTRAS -->
+        <section class="panel panel-extras">
+        <h2 class="seccion-titulo">3 · Configurar reserva</h2>
+        <div id="areaExtras" class="area-extras">
+            <p class="hint">Seleccioná un crucero para elegir camarote, paquete de bebidas y cantidad de personas.</p>
+        </div>
+        </section>
+    </main>
+
+    <!-- MODAL CARRITO -->
+    <div id="modalCarrito" class="modal" aria-hidden="true" role="dialog" aria-labelledby="tituloModal">
+        <div class="modal-contenido">
+            <header class="modal-cabecera">
+                <h3 id="tituloModal">Resumen de mis vacaciones</h3>
+                <button id="btnCerrarModal" class="btn btn-icon" aria-label="Cerrar modal">&times;</button>
+            </header>
+
+        <div class="modal-cuerpo">
+            <div id="listaModal" class="modal-lista"></div>
+
+                <aside class="modal-resumen">
+                    <div class="resumen-fila"><span>Subtotal</span><strong>$<span id="modalSubtotal">0.00</span></strong></div>
+                    <div class="resumen-fila"><span>Impuestos (12%)</span><strong>$<span id="modalImpuestos">0.00</span></strong></div>
+                    <div class="resumen-fila"><span>Tasas portuarias</span><strong>$<span id="modalTasas">0.00</span></strong></div>
+                    <div class="resumen-fila"><span>Propinas</span><strong>$<span id="modalPropinas">0.00</span></strong></div>
+                    <div class="resumen-total"><span>Total</span><strong>$<span id="modalTotal">0.00</span></strong></div>
+
+                    <div class="modal-acciones" style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
+                        <button id="btnVaciarModal" class="btn btn-outline">Vaciar carrito</button>
+                        <button id="btnFinalizarCompra" class="btn btn-primary">FINALIZAR COMPRA</button>
+                        <div id="mensajeErrorPago" class="mensaje-error" aria-hidden="true"></div>
+                    </div>
+            </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <div class="lightbox-contenido" role="dialog" aria-labelledby="lightboxTitulo">
+            <button id="lightboxCerrar" class="btn btn-icon" aria-label="Cerrar imagen">&times;</button>
+            <img id="lightboxImg" src="" alt="Vista amplia">
+            <div id="lightboxDetalle" class="lightbox-detalle"></div>
+        </div>
+    </div>
+
+    <!-- PIE -->
+    <footer class="pie">
+        <div class="pie-inner">
+            <small>Segunda Entrega JS | Coderhouse | Simulador Reserva Crucero | Gonzalo Damián Raschella</small>
+        </div>
+    </footer>
+</body>
+
+</html>
